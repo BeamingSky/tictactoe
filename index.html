@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+
+    <link rel="stylesheet" href="tic.css" />
+  </head>
+  <body>
+    <div class="overlay"></div>
+    <div class="button-30" id="statusText">Play</div>
+
+    <table class="tic-container">
+      <tr>
+        <td class="cell tic-cell" cellIndex="0"></td>
+        <td class="cell tic-cell" cellIndex="1"></td>
+        <td class="cell tic-cell" cellIndex="2"></td>
+      </tr>
+      <tr>
+        <td class="cell tic-cell" cellIndex="3"></td>
+        <td class="cell tic-cell" cellIndex="4"></td>
+        <td class="cell tic-cell" cellIndex="5"></td>
+      </tr>
+      <tr>
+        <td class="cell tic-cell" cellIndex="6"></td>
+        <td class="cell tic-cell" cellIndex="7"></td>
+        <td class="cell tic-cell" cellIndex="8"></td>
+      </tr>
+    </table>
+
+    <button class="btn button-53" id="restartBtn">New Game</button>
+
+    <script>
+      // This variable keeps track of the current player, initialized to "X" as the first player.
+      let currentPlayer = "X";
+
+      // This variable determines if the game is still active. It's set to true initially to indicate the game is ongoing.
+      let gameActive = true;
+
+      // This line selects all HTML elements with the class "cell" and stores them in the cells constant. These are the individual cells of the Tic-Tac-Toe board.
+      const cells = document.querySelectorAll(".cell");
+
+      // This line selects an HTML element with the id "statusText" and stores it in the statusText constant. This element is used to display the game status.
+      const statusText = document.querySelector("#statusText");
+
+      // Loop that adds a click event listener to each cell. When a cell is clicked, the handleCellClick function is called.
+      for (let i = 0; i < cells.length; i++) {
+        cells[i].addEventListener("click", function (event) {
+          handleCellClick(event);
+        });
+      }
+
+      // This function is called when a cell is clicked. It checks if the game is still active and if the clicked cell is empty. If both conditions are met, it marks the cell with the current player's symbol ("X" or "O").
+      function handleCellClick(event) {
+        const cell = event.target;
+        if (!gameActive || cell.textContent !== "") return;
+
+        cell.textContent = currentPlayer;
+
+        // If there is a win, it ends the game and displays a message.
+        if (checkWin()) endGame(`${currentPlayer} wins!`);
+        // If it's a draw, the game ends.
+        else if (checkDraw()) endGame("It's a draw!");
+
+        // Toggle the currentPlayer between "X" and "O" for the next turn
+        currentPlayer = currentPlayer === "X" ? "O" : "X";
+      }
+
+      // This function checks if any of the predefined win conditions are met. If any of the conditions match the current player's symbols in the respective cells, it returns true to indicate a win.
+      function checkWin() {
+        const winConditions = [
+          [0, 1, 2],
+          [3, 4, 5],
+          [6, 7, 8],
+          [0, 3, 6],
+          [1, 4, 7],
+          [2, 5, 8],
+          [0, 4, 8],
+          [2, 4, 6],
+        ];
+
+        for (const condition of winConditions) {
+          const [a, b, c] = condition;
+          if (
+            cells[a].textContent === currentPlayer &&
+            cells[b].textContent === currentPlayer &&
+            cells[c].textContent === currentPlayer
+          )
+            return true; // The current player has won
+        }
+
+        return false; // No winning condition met
+      }
+
+      // This function checks if all cells are filled and returns true for a draw if no empty cells are found.
+      function checkDraw() {
+        for (let i = 0; i < cells.length; i++)
+          if (cells[i].textContent === "") return false; // If any cell is empty, it's not a draw
+
+        return true; // If no empty cells are found, it's a draw
+      }
+
+      // This function is called when the game ends. It displays the provided message in the statusText element and sets gameActive to false to indicate that the game is no longer active.
+      function endGame(message) {
+        statusText.textContent = message;
+        gameActive = false;
+      }
+
+      // Reset button event listener that clears all cells and resets the game to its initial state when clicked.
+      document
+        .querySelector("#restartBtn")
+        .addEventListener("click", function () {
+          cells.forEach(function (cell) {
+            cell.textContent = "";
+          });
+
+          currentPlayer = "X";
+          gameActive = true;
+          statusText.textContent = "Play"; // Reset the status text to "Play"
+        });
+    </script>
+  </body>
+</html>
