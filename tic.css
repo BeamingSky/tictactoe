@@ -1,0 +1,190 @@
+html {
+  cursor: url("giphy.gif"), auto;
+}
+/* Reset some default styles */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Background settings */
+body {
+  background-image: url(bob.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100vh; /* 100% of the viewport height */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Background overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(40, 40, 40, 0.6); /* Transparent overlay */
+  z-index: -9999;
+}
+
+/* Center content container */
+.tic-container {
+  margin: auto;
+  margin-top: 13%;
+  border-collapse: collapse;
+}
+
+.tic-cell {
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+  border: 3px solid beige;
+  text-align: center;
+  font-size: 29px;
+  font-family: comic sans ms ;
+  color: whitesmoke;
+}
+
+/* Add this to remove the outer border */
+.tic-container tr:first-child .tic-cell {
+  border-top: none;
+}
+
+.tic-container tr:last-child .tic-cell {
+  border-bottom: none;
+}
+
+.tic-container tr .tic-cell:first-child {
+  border-left: none;
+}
+
+.tic-container tr .tic-cell:last-child {
+  border-right: none;
+}
+
+/* Button styling */
+.button-53 {
+  display: block;
+  margin: 10vh auto; /* Adjust this for vertical positioning */
+  background-color: #3dd1e7;
+  border: 2px solid #000000;
+  box-sizing: border-box;
+  color: #000000;
+  font-family: "JetBrains Mono", monospace;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  width: 200px;
+  max-width: 100%;
+  cursor: url("giphy.gif"), auto;
+  position: relative;
+  transform: rotate(-2deg);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  text-align: center; /* Center text horizontally */
+  padding: 10px 0; /* Add some vertical padding for readability */
+  transition: all 0.2s; /* Smooth hover effect */
+}
+
+.button-53:focus {
+  outline: 0;
+}
+
+.button-53:after {
+  content: "";
+  position: absolute;
+  border: 2px solid #000000;
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  top: 4px;
+}
+
+.button-53:hover:after {
+  bottom: 2px;
+  left: 2px;
+  right: 2px;
+  top: 2px;
+}
+
+@media (min-width: 768px) {
+  /* Responsive styles for larger screens */
+  .button-53 {
+    padding: 15px 30px;
+    font-size: 1.25rem;
+  }
+}
+
+/* Status message */
+.status {
+  text-align: center;
+  letter-spacing: 2px;
+  color: black;
+  font-size: 2rem;
+  margin: auto;
+  font-family: dark11;
+}
+
+/* ------------------------- */
+
+.button-30 {
+    display: block;
+    margin: 10vh auto; /* Adjust this for vertical positioning */
+    background-color: #e73d59;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    color: #000000;
+    font-family: "JetBrains Mono", monospace;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    width: 200px;
+    max-width: 100%;
+    position: relative;
+    cursor: url("giphy.gif"), auto;
+    transform: rotate(-2deg);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    text-align: center; /* Center text horizontally */
+    padding: 10px 0; /* Add some vertical padding for readability */
+    transition: all 0.2s;
+}
+
+.button-30:focus {
+    outline: 0;
+  }
+  
+  .button-30:after {
+    content: "";
+    position: absolute;
+    border: 2px solid #000000;
+    bottom: 4px;
+    left: 4px;
+    right: 4px;
+    top: 4px;
+  }
+  
+  .button-30:hover:after {
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    top: 2px;
+  }
+  
+  @media (min-width: 768px) {
+    /* Responsive styles for larger screens */
+    .button-30 {
+      padding: 15px 30px;
+      font-size: 1.25rem;
+    }
+  }
+
+/* ----------------------------- */
